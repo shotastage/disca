@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-
+import DestyledLink from './DestyledLink';
 
 
 export const DSNavbar = styled(Navbar)`
@@ -19,7 +19,7 @@ export const DSNavBrand = styled(Navbar.Brand)`
 export function NavbarWidget() {
     return (
         <DSNavbar bg="light" expand="lg">
-        <DSNavBrand href="#home">Disca!</DSNavBrand>
+        <DSNavBrand href="/">Disca!</DSNavBrand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
