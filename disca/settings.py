@@ -57,6 +57,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+    'home.apps.HomeConfig',
     'session.apps.SessionConfig',
     'meeting.apps.MeetingConfig',
     'django.contrib.admin',
@@ -83,7 +84,7 @@ ROOT_URLCONF = 'disca.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join('disca-front', 'dist'), 'views'],
+        'DIRS': [os.path.join('disca-front', 'build'), 'views'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -157,12 +158,12 @@ STATIC_URL = '/static/'
 
 
 if RUNNING_MODE == "devel":
-    STATICFILES_DIRS = (os.path.join('disca-front', 'dist', 'static'),
+    STATICFILES_DIRS = (os.path.join('disca-front', 'build', 'static'),
     os.path.join('frontend', 'generates'),
     )
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_DIRS = (os.path.join('disca-front', 'dist', 'static'),
+    STATICFILES_DIRS = (os.path.join('disca-front', 'build', 'static'),
     os.path.join('frontend', 'generates'),
     )
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
