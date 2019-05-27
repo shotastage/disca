@@ -7,6 +7,7 @@ import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-boots
 export const DSNavbar = styled(Navbar)`
     background: #fff !important;
     filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.336));
+    margin-bottom: 30px;
 `;
 
 
