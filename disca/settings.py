@@ -11,6 +11,22 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from disca.db_secret import database_setting
+
+
+
+try:
+    RUNNING_MODE = os.environ["DISCA_RUNNING_MODE"]
+except:
+    RUNNING_MODE = "devel"
+
+try:
+    DEBUG_LOG_MODE = os.environ["DEBUG_LOG_MODE"]
+except:
+    DEBUG_LOG_MODE = "FALSE"
+
+APPLICATION_NAME = "Disca"
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,9 +39,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'v5r0d(@iazyt=v@nrw$5mylp*%e*(fz_em$pi58adn7^ge($l!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if RUNNING_MODE == "production":
+    DEBUG = False
+else:
+    DEBUG = True
 
-ALLOWED_HOSTS = []
+if DEBUG_LOG_MODE == "TRUE":
+    DEBUG = True
+
+
+if RUNNING_MODE == "production":
+    ALLOWED_HOSTS = ["*"]
+else:
+    ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,6 +65,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +83,7 @@ ROOT_URLCONF = 'disca.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join('disca-front', 'dist'), 'views'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,12 +102,16 @@ WSGI_APPLICATION = 'disca.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if RUNNING_MODE == "production":
+    DATABASES = database_setting
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+
 
 
 # Password validation
@@ -105,9 +136,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja-JP'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
@@ -118,5 +149,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+MIDDLEWARE_CLASSES = (
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+)
 
 STATIC_URL = '/static/'
+
+
+if RUNNING_MODE == "devel":
+    STATICFILES_DIRS = (os.path.join('disca-front', 'dist', 'static'),
+    os.path.join('frontend', 'generates'),
+    )
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_DIRS = (os.path.join('disca-front', 'dist', 'static'),
+    os.path.join('frontend', 'generates'),
+    )
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
