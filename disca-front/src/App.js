@@ -2,7 +2,7 @@ import React from 'react';
 import { NavbarWidget } from './components/Navbar';
 import { DSCard, DSCardTitle } from './components/Card';
 import { Container, Row, Col } from 'react-bootstrap';
-import './App.css';
+import DestyledLink from './components/DestyledLink';
 
 function App() {
   return (
@@ -10,29 +10,46 @@ function App() {
       <NavbarWidget/>
       <Container>
         <Row>
-          <Col md={3}>
-            <DSCard body>
-              <DSCardTitle>NECO</DSCardTitle>
-              <p>
-                Description text is here!
-              </p>
-            </DSCard>
-          </Col>
           
           <Col md={3}>
-            <DSCard body>
-              <h1>メンヘラ概論</h1>
-            </DSCard>
+            <DestyledLink to="/team/">
+              <DSCard body>
+                <DSCardTitle>NECO</DSCardTitle>
+                <p>
+                  Description text is here!
+                </p>
+              </DSCard>
+            </DestyledLink>
           </Col>
           <Col md={3}>
-            <DSCard body>
-              <h1>React Meet</h1>
-            </DSCard>
+            <DestyledLink to="/team/">
+              <DSCard body>
+                <DSCardTitle>データーベース概論</DSCardTitle>
+                <p>
+                  Description text is here!
+                </p>
+              </DSCard>
+            </DestyledLink>
           </Col>
           <Col md={3}>
-            <DSCard body>
-              <h1>Django Up!</h1>
-            </DSCard>
+            <DestyledLink to="/team/">
+              <DSCard body>
+                <DSCardTitle>React Meet</DSCardTitle>
+                <p>
+                  Description text is here!
+                </p>
+              </DSCard>
+            </DestyledLink>
+          </Col>
+          <Col md={3}>
+            <DestyledLink to="/team/">
+              <DSCard body>
+                <DSCardTitle>Django Up!</DSCardTitle>
+                <p>
+                  Description text is here!
+                </p>
+              </DSCard>
+            </DestyledLink>
           </Col>
         </Row>
       </Container>

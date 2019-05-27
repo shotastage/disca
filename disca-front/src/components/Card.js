@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components';
 
 
@@ -7,6 +6,14 @@ export const DSCard = styled.div`
     padding: 15px;
     background: #fff;
     border-radius: 10px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+	transition: all .3s;
+
+
+    &:hover {
+        filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.336));
+    }
 `;
 
 
