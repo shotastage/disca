@@ -4,43 +4,15 @@ import { DSCard, DSCardTitle } from './components/Card';
 import { Container, Row, Col } from 'react-bootstrap';
 
 
-function Team() {
+function Signup() {
   return (
     <>
       <NavbarWidget/>
       <Container>
         <Row>
-          <Col md={3}>
-            <DSCard body>
-              <DSCardTitle>NECO</DSCardTitle>
-              <p>
-                Description text is here!
-              </p>
-            </DSCard>
-          </Col>
-          
-          <Col md={3}>
-            <DSCard body>
-              <DSCardTitle>データーベース概論</DSCardTitle>
-              <p>
-                Description text is here!
-              </p>
-            </DSCard>
-          </Col>
-          <Col md={3}>
-            <DSCard body>
-              <DSCardTitle>React Meet</DSCardTitle>
-              <p>
-                Description text is here!
-              </p>
-            </DSCard>
-          </Col>
-          <Col md={3}>
-            <DSCard body>
-              <DSCardTitle>Django Up!</DSCardTitle>
-              <p>
-                Description text is here!
-              </p>
+          <Col md={5}>
+            <DSCard>
+              <DSCardTitle>Signup</DSCardTitle>
             </DSCard>
           </Col>
         </Row>
@@ -49,4 +21,4 @@ function Team() {
   );
 }
 
-export default Team;
+export default Signup;
