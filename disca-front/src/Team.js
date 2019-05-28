@@ -1,7 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 import { NavbarWidget } from './components/Navbar';
-import { DSCard, DSCardTitle } from './components/Card';
 import { Container, Row, Col } from 'react-bootstrap';
+
+
+
+const Heading = styled.h1`
+  font-weight: bold;
+  font-size: 3.5rem;
+`;
 
 
 function Team() {
@@ -10,38 +17,8 @@ function Team() {
       <NavbarWidget/>
       <Container>
         <Row>
-          <Col md={3}>
-            <DSCard body>
-              <DSCardTitle>NECO</DSCardTitle>
-              <p>
-                Description text is here!
-              </p>
-            </DSCard>
-          </Col>
-          
-          <Col md={3}>
-            <DSCard body>
-              <DSCardTitle>データーベース概論</DSCardTitle>
-              <p>
-                Description text is here!
-              </p>
-            </DSCard>
-          </Col>
-          <Col md={3}>
-            <DSCard body>
-              <DSCardTitle>React Meet</DSCardTitle>
-              <p>
-                Description text is here!
-              </p>
-            </DSCard>
-          </Col>
-          <Col md={3}>
-            <DSCard body>
-              <DSCardTitle>Django Up!</DSCardTitle>
-              <p>
-                Description text is here!
-              </p>
-            </DSCard>
+          <Col md={6}>
+            <Heading>NECO Team</Heading>
           </Col>
         </Row>
       </Container>
