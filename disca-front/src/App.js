@@ -3,6 +3,8 @@ import { NavbarWidget } from './components/Navbar';
 import { DSCard, DSCardTitle } from './components/Card';
 import { Container, Row, Col } from 'react-bootstrap';
 import DestyledLink from './components/DestyledLink';
+import BgSymbol from './components/BackgroundSymbol';
+
 
 function App() {
   return (
@@ -53,6 +55,7 @@ function App() {
           </Col>
         </Row>
       </Container>
+      <BgSymbol/>
     </>
   );
 }
