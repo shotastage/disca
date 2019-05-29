@@ -19,7 +19,7 @@ const Button = styled.a`
     filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.336));
     transition: .4s;
     margin-bottom: 20px;
-    margin-left: 40px;
+    margin-left: 60px;
 
     &:hover {
         filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.336));
