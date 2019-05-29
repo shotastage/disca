@@ -9,6 +9,7 @@ export const DSCard = styled.div`
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
 	transition: all .3s;
+    margin-bottom: 2rem;
 
 
     &:hover {

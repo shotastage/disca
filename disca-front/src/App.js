@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavbarWidget } from './components/Navbar';
 import { DSCard, DSCardTitle } from './components/Card';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import DestyledLink from './components/DestyledLink';
 import BgSymbol from './components/BackgroundSymbol';
+import { CircleButton } from './components/Buttons';
 
 
 
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <NavbarWidget/>
+      <CircleButton/>
       <Container>
         <Row>
           
@@ -18,15 +20,14 @@ function App() {
             <DestyledLink to="/team/">
               <DSCard body>
                 <DSCardTitle>NECO</DSCardTitle>
-                <Button variant="primary">Primary</Button>
-
+                <p>Description text is here</p>
               </DSCard>
             </DestyledLink>
           </Col>
           <Col md={3}>
             <DestyledLink to="/team/">
               <DSCard body>
-                <DSCardTitle>NECO</DSCardTitle>
+                <DSCardTitle>NECO RG TTTT</DSCardTitle>
                 <p>
                   Description text is here!
                 </p>
