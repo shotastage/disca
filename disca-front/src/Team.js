@@ -16,69 +16,6 @@ const Heading = styled.h1`
   font-size: 3.5rem;
 `;
 
-const barHeight = "5rem";
-
-const MenuBar = styled.div`
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-  margin-top: 1em;
-  background: #fff;
-  height: ${barHeight};
-  line-height: ${barHeight};
-  margin: 1.5em;
-  margin-bottom: 1.2em;
-  margin-left: 0;
-  background: #333;
-`;
-
-
-const MenuList = styled.ul`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-`;
-
-
-const MenuListItem = styled.li`
-  list-style: none;
-  width: 10rem;
-  height: auto;
-  line-height: auto;
-  color: #fff;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-right: 20px;
-  text-align: center;
-  background: #f7274a;
-  border-radius: 40px;
-  -webkit-transition: all .3s;
-  -moz-transition: all .3s;
-  transition: all .3s;
-`;
-
-
-const MenuItemLink = styled.a`
-  color: white;
-  height: ${barHeight} - 2rem;
-  line-height: ${barHeight} - 2rem;
-  width: 100%;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.1rem;
-  padding-left: 10px;
-  padding-right: 10px;
-
-        &:hover {
-            text-decoration: none;
-            color: white;
-        }
-
-`;
-
-
-
 
 function Team() {
   return (
