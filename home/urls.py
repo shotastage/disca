@@ -1,6 +1,12 @@
 from django.urls import path
-from home.views import HomeView
+from rest_framework import routers
+from .views import HomeView, TeamViewSet
+
 
 urlpatterns = [
     path('', HomeView.as_view(), name='starts'),
 ]
+
+router = routers.DefaultRouter()
+router.register(r'team', TeamViewSet)
+urlpatterns += router.urls
