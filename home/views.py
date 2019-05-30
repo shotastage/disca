@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import View
+from rest_framework.response import Response
 from rest_framework import viewsets, filters
 from .models import Team
 from .serializer import TeamSerializer
@@ -8,12 +9,16 @@ from .serializer import TeamSerializer
 
 
 class HomeView(View):
-
     def get(self, request):
         return render(request, "index.html")
 
 
 
 class TeamViewSet(viewsets.ModelViewSet):
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer
+
+
+class TeamDetailViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer

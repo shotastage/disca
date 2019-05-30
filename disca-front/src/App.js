@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Container, Row, Col } from 'react-bootstrap';
 import { NavbarWidget } from './components/Navbar';
 import { DSCard, DSCardTitle } from './components/Card';
-import { Container, Row, Col } from 'react-bootstrap';
 import DestyledLink from './components/DestyledLink';
 import BgSymbol from './components/BackgroundSymbol';
 import { CircleButton } from './components/Buttons';
-import axios from 'axios';
 
 
 
@@ -19,38 +18,18 @@ const Heading = styled.h1`
 `;
 
 
-const getTeamData = async () => {
-  try {
-    const result = await axios.get('http://127.0.0.1:8000/team/');
-
-    return result;
-  } catch (error) {
-    console.log("error!!");
-  }
-};
-
-
-
-const PrepareData = ()  => {
-
-  let recievedData = [];
+const PrepareData = (data)  => {
   let splitData = [];
   let renderStructure = [];
 
+  for (var i = 0; i < data.length; i++) {
+      splitData.push(data[i])
 
-  recievedData = [
-    {name: "NECO", description: "研究くらい自分でしろや"}, {name: "NECO", description: "エビデンスくらい自分で設計しろや"}, {name: "NECO", description: "研究くらいしろや"}, {name: "NECO", description: "研究くらいしろや"},{name: "NECO", description: "研究くらいしろや"}, {name: "NECO", description: "研究くらいしろや"}, {name: "NECO", description: "研究くらいしろや"},
-  ];
-
-  for (var i = 0; i < recievedData.length; i++) {
-      splitData.push(recievedData[i])
-
-      if (( i !== 0 && i % 3 === 0) || i === recievedData.length - 1) {
+      if (( i !== 0 && (i - 3) % 4 === 0) || i === data.length - 1) {
         renderStructure.push(splitData)
         splitData = []
       }
   }
-
 
   return renderStructure;
 }
@@ -70,9 +49,12 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    this.setState({
-      teams: PrepareData(),
-    })
+    fetch('http://127.0.0.1:8000/team/')
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({ teams: PrepareData(data) })
+      })
+      .catch(console.log)
   }
 
   render() {
@@ -91,7 +73,7 @@ class App extends React.Component {
                 {data.map((elm) => {
                   return (
                     <Col md={3}>
-                    <DestyledLink to="/team/">
+                    <DestyledLink to={"/team/" + elm.identification}>
                       <DSCard body>
                         <DSCardTitle>{elm.name}</DSCardTitle>
                         <p>{elm.description}</p>
