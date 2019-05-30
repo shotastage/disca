@@ -49,7 +49,7 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    fetch('http://127.0.0.1:8000/team/')
+    fetch('http://127.0.0.1:8000/team')
       .then(res => res.json())
       .then((data) => {
         this.setState({ teams: PrepareData(data) })
@@ -73,7 +73,7 @@ class App extends React.Component {
                 {data.map((elm) => {
                   return (
                     <Col md={3}>
-                    <DestyledLink to={"/team/" + elm.identification}>
+                    <DestyledLink to={"/team/detail?idf=" + elm.identification}>
                       <DSCard body>
                         <DSCardTitle>{elm.name}</DSCardTitle>
                         <p>{elm.description}</p>

@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic import View
 from rest_framework.response import Response
 from rest_framework import viewsets, filters, generics
+from rest_framework.views import APIView
+
 from .models import Team
 from .serializer import TeamSerializer
 
@@ -19,12 +21,14 @@ class TeamViewSet(viewsets.ModelViewSet):
     serializer_class = TeamSerializer
 
 
-class TeamDetailViewSet(generics.ListAPIView):
 
-    lookup_field = "uid"
-
+class TeamDetailViewSet(viewsets.ModelViewSet):
     serializer_class = TeamSerializer
 
     def get_queryset(self):
-        team_info = Team.objects.filter(identification=self.lookup_field)
+
+        print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD")
+
+        print(self.request.query_params.get('idf'))
+        team_info = Team.objects.filter(identification=self.request.query_params.get('idf'))
         return team_info

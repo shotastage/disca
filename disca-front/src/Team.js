@@ -17,39 +17,66 @@ const Heading = styled.h1`
 `;
 
 
-function Team() {
-  return (
-    <>
-      <NavbarWidget/>
-      <Container>
-        <Row>
-          <Col md={12}>
-            <Heading>なんでやねーん！</Heading>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12}>
-            <h1>アプリ一覧</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={3}>
-            <Image src={bg} roundedCircle/>
-          </Col>
-          <Col md={3}>
-            <Image src={bg} roundedCircle/>
-          </Col>
-          <Col md={3}>
-            <Image src={bg} roundedCircle/>
-          </Col>
-          <Col md={3}>
-            <Image src={bg} roundedCircle/>
-          </Col>
-        </Row>
-      </Container>
-      <BgSymbol/>
-    </>
-  );
+
+class Team extends React.Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      teams: [],
+    }
+  }
+
+
+  componentDidMount() {
+
+    let url = window.location.href
+
+    fetch(url)
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({ teams: data[0] })
+      })
+      .catch(console.log)
+  }
+
+
+  render() {
+    return (
+      <>
+        <NavbarWidget/>
+        <Container>
+          <Row>
+            <Col md={12}>
+              <Heading>{this.state.teams.name}</Heading>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12}>
+              <h1>アプリ一覧</h1>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <Image src={bg} roundedCircle/>
+            </Col>
+            <Col md={3}>
+              <Image src={bg} roundedCircle/>
+            </Col>
+            <Col md={3}>
+              <Image src={bg} roundedCircle/>
+            </Col>
+            <Col md={3}>
+              <Image src={bg} roundedCircle/>
+            </Col>
+          </Row>
+        </Container>
+        <BgSymbol/>
+      </>
+    );
+  }
 }
+
 
 export default Team;
