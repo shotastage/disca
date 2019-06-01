@@ -35,8 +35,6 @@ const PrepareData = (data)  => {
 }
 
 
-
-
 class App extends React.Component {
 
   constructor(props) {
