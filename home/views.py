@@ -26,9 +26,5 @@ class TeamDetailViewSet(viewsets.ModelViewSet):
     serializer_class = TeamSerializer
 
     def get_queryset(self):
-
-        print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD")
-
-        print(self.request.query_params.get('idf'))
         team_info = Team.objects.filter(identification=self.request.query_params.get('idf'))
         return team_info
