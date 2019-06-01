@@ -14,6 +14,7 @@ class Session(models.Model):
     created_at = models.DateField(default=timezone.now)
 
 
+
 class Comment(models.Model):
     comment = models.TextField()
     session_id = models.CharField(max_length = 255)
