@@ -24,6 +24,7 @@ class TeamViewSet(viewsets.ModelViewSet):
 
 class TeamDetailViewSet(viewsets.ModelViewSet):
     serializer_class = TeamSerializer
+    lookup_field = 'team_id'
 
     def get_queryset(self):
         team_info = Team.objects.filter(identification=self.request.query_params.get('idf'))

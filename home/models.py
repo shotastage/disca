@@ -18,18 +18,3 @@ class Team(models.Model):
   def __str__(self):
     return self.name
 
-
-class Application(models.Model):
-
-  APPLICATION_CAYEGORY = [
-    ('EDU', 'Education')
-  ]
-
-  app = models.CharField(max_length = 255)
-  app_type = models.CharField(max_length = 5, choices=APPLICATION_CAYEGORY, null=True)
-  url = models.CharField(max_length = 255, null=True)
-  belonging_to = models.ForeignKey(Team, on_delete=models.CASCADE)
-
-  def __str__(self):
-    return self.app
-
