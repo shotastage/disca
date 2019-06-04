@@ -57,6 +57,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+    'attend.apps.AttendConfig',
     'home.apps.HomeConfig',
     'session.apps.SessionConfig',
     'meeting.apps.MeetingConfig',
