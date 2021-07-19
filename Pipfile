@@ -1,17 +1,17 @@
 [[source]]
-name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
-
-[dev-packages]
-pylint = "*"
-pep8 = "*"
-django-mirage = "*"
+name = "pypi"
 
 [packages]
 django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 
+[dev-packages]
+pylint = "*"
+pep8 = "*"
+mirage-django-lts = "*"
+
 [requires]
-python_version = "3.7.4"
+python_version = "3.9"
